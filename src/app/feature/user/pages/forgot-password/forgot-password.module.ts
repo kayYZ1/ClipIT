@@ -8,7 +8,7 @@ import { ForgotPasswordComponent } from './forgot-password.component';
     ForgotPasswordComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule
   ]
 })
 export class ForgotPasswordModule { }

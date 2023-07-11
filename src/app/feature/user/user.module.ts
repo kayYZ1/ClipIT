@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { LoginModule } from './pages/login/login.module';
 import { RegisterModule } from './pages/register/register.module';
@@ -10,10 +11,11 @@ import { UserRoutingModule } from './user.routing.module';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
+    UserRoutingModule,
     LoginModule,
     RegisterModule,
     ForgotPasswordModule,
-    UserRoutingModule
   ]
 })
 export class UserModule { }
