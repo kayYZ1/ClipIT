@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { LoginModule } from './pages/login/login.module';
 import { RegisterModule } from './pages/register/register.module';
+import { ForgotPasswordModule } from './pages/forgot-password/forgot-password.module';
+
 import { UserRoutingModule } from './user.routing.module';
 
 @NgModule({
@@ -10,6 +12,7 @@ import { UserRoutingModule } from './user.routing.module';
     CommonModule,
     LoginModule,
     RegisterModule,
+    ForgotPasswordModule,
     UserRoutingModule
   ]
 })
