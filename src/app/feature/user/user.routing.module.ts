@@ -6,9 +6,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
-  { path: "login", component: LoginComponent },
+  { path: "", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "login/forgot-password", component: ForgotPasswordComponent },
+  { path: "forgot-password", component: ForgotPasswordComponent },
 ]
 
 @NgModule({
