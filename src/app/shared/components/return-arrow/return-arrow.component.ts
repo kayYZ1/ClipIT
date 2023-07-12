@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-return-arrow',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./return-arrow.component.scss']
 })
 export class ReturnArrowComponent {
+  constructor (private _location: Location) {}
 
+  prevPage() {
+    this._location.back()
+  }
 }
