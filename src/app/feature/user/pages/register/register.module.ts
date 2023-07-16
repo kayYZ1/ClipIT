@@ -9,6 +9,6 @@ import { ReturnArrowModule } from 'src/app/shared/components/return-arrow/return
   declarations: [RegisterComponent],
   imports: [
     CommonModule, ReturnArrowModule, ReactiveFormsModule, FormsModule
-  ]
+  ],
 })
 export class RegisterModule { }

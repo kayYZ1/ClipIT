@@ -10,9 +10,7 @@ import { RegisterValidators } from 'src/app/shared/validators/register-validator
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
-  disableBtn = true
-
+export class RegisterComponent {  
   registerForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -33,13 +31,8 @@ export class RegisterComponent {
     [RegisterValidators.match('password', 'r_password')]
   );
 
-  ngOnInit() {
-    this.registerForm.valueChanges.subscribe(() => {
-      this.disableBtn = this.registerForm.invalid
-    })
-  }
-
   onSubmit() {
-    console.log(this.registerForm.value as IUser);
+    console.log(this.registerForm.value);
+    console.log("Dupa")
   }
 }
