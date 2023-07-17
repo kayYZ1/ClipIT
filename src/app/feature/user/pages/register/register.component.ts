@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { IUser } from 'src/app/core/models/User';
-
 import { RegisterValidators } from 'src/app/shared/validators/register-validator';
 
 @Component({
@@ -10,7 +8,7 @@ import { RegisterValidators } from 'src/app/shared/validators/register-validator
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {  
+export class RegisterComponent {
   registerForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),

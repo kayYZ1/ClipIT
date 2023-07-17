@@ -1,22 +1,40 @@
 <app-return-arrow></app-return-arrow>
 <div class="flex items-center justify-center h-96 mt-24">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
     <div class="mb-4 w-96">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
         Email
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline {{ registerForm.get('email')?.errors && registerForm.get('email')?.touched ? 'border-red-500' : '' }}"
         id="email" type="email" placeholder="kubus@placeholder.com" required formControlName="email">
+      <div class="text-red-500 text-xs italic"
+        *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+        <div *ngIf="registerForm.get('email')?.errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="registerForm.get('email')?.errors?.['email']">
+          Please enter a valid email address.
+        </div>
+      </div>
     </div>
+
     <div class="mb-4 w-96">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
         Username
       </label>
       <input
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline {{ registerForm.get('username')?.errors && registerForm.get('username')?.touched ? 'border-red-500' : '' }}"
         id="username" type="text" placeholder="kubenc7123 " required formControlName="username">
+      <div class="text-red-500 text-xs italic"
+        *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched">
+        <div *ngIf="registerForm.get('username')?.errors?.['required']">
+          Username is required.
+        </div>
+      </div>
     </div>
+
     <div class="mb-4 w-96">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
         Password
