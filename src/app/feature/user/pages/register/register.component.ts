@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { RegisterValidators } from 'src/app/shared/validators/register-validator';
+import { AuthService } from '../../services/AuthService';
+import { IUser, UserDTO } from 'src/app/core/models/User';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +11,8 @@ import { RegisterValidators } from 'src/app/shared/validators/register-validator
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
+  constructor(private _auth: AuthService) {}
+
   registerForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,8 +33,12 @@ export class RegisterComponent {
     [RegisterValidators.match('password', 'r_password')]
   );
 
-  onSubmit() {
-    console.log(this.registerForm.value);
-    console.log("Dupa")
+  async onSubmit() {
+    try {
+      await this._auth.createUser(this.registerForm.value as IUser)
+    } catch (e) {
+      console.error(e)
+      return
+    }
   }
 }
