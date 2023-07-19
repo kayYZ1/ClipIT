@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { RegisterValidators } from 'src/app/shared/validators/register-validator';
 import { AuthService } from '../../services/AuthService';
-import { IUser, UserDTO } from 'src/app/core/models/User';
+import { IUser } from 'src/app/core/models/User';
 
 @Component({
   selector: 'app-register',

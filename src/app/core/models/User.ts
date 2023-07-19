@@ -1,12 +1,5 @@
-export interface UserDTO {
-  email: string,
-  password: string,
-  r_password: string,
-  username: string,
-  age: number,
-}
-
 export interface IUser {
+  uid: string,
   email: string,
   password: string,
   username: string,

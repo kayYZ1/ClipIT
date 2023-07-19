@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { UserDTO, IUser } from 'src/app/core/models/User';
+import { IUser } from 'src/app/core/models/User';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -20,6 +20,7 @@ export class AuthService {
     }
 
     await this.usersCollection.doc(credentials.user.uid).set({
+      uid: user.uid,
       email: user.email,
       password: user.password,
       username: user.username,
