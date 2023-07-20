@@ -94,8 +94,10 @@
       <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit" [disabled]="!registerForm.valid" [class.pointer-events-none]="!registerForm.valid"
         [class.opacity-50]="!registerForm.valid">
-        Sign Up
+        <app-spinner *ngIf="this.loading"></app-spinner>
+        <span *ngIf="!this.loading">Sign Up</span>
       </button>
     </div>
+    <app-error-alert [code]="this.code" [message]="this.message" *ngIf="this.message"></app-error-alert>
   </form>
 </div>

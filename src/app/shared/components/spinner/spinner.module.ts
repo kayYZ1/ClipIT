@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ErrorAlertComponent } from './error-alert/error-alert.component';
+import { SpinnerComponent } from './spinner.component';
 
 @NgModule({
   declarations: [
-    ErrorAlertComponent
+    SpinnerComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ErrorAlertComponent
+    SpinnerComponent
   ]
 })
-export class AlertsModule { }
+export class SpinnerModule { }

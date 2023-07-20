@@ -12,6 +12,10 @@ import { IUser } from 'src/app/core/models/User';
 })
 export class RegisterComponent {
   constructor(private _auth: AuthService) {}
+  
+  loading = false
+  message = ""
+  code = null
 
   registerForm = new FormGroup(
     {
@@ -35,10 +39,15 @@ export class RegisterComponent {
 
   async onSubmit() {
     try {
+      this.loading = true
       await this._auth.createUser(this.registerForm.value as IUser)
-    } catch (e) {
+      this.loading = false
+    } catch (e: any) {
+      this.loading = true
       console.error(e)
-      return
+      this.code = e.code
+      this.message = e.message
+      this.loading = false
     }
   }
 }

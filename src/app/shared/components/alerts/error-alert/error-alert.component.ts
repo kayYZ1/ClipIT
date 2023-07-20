@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./error-alert.component.scss']
 })
 export class ErrorAlertComponent {
-  @Input() message: string = ""
-
-  
+  @Input() message: string = "";
+  @Input() code: number | null = null;
 }
