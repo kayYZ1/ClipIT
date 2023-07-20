@@ -20,7 +20,7 @@ export class AuthService {
     }
 
     await this.usersCollection.doc(credentials.user.uid).set({
-      uid: user.uid,
+      
       email: user.email,
       password: user.password,
       username: user.username,
