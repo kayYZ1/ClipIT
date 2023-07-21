@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router'
+;
 import { RegisterValidators } from 'src/app/shared/validators/register-validator';
 import { AuthService } from '../../services/AuthService';
 import { IUser } from 'src/app/core/models/User';
@@ -11,7 +12,7 @@ import { IUser } from 'src/app/core/models/User';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  constructor(private _auth: AuthService) {}
+  constructor(private _auth: AuthService, private _router: Router) {}
   
   loading = false
   message = ""
@@ -42,6 +43,7 @@ export class RegisterComponent {
       this.loading = true
       await this._auth.createUser(this.registerForm.value as IUser)
       this.loading = false
+      this._router.navigateByUrl("auth")
     } catch (e: any) {
       this.loading = true
       console.error(e)
