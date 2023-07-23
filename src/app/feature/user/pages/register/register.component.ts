@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router'
-;
+import { Router } from '@angular/router';
 import { RegisterValidators } from 'src/app/shared/validators/register-validator';
 import { AuthService } from '../../services/AuthService';
 import { IUser } from 'src/app/core/models/User';
@@ -13,10 +12,10 @@ import { IUser } from 'src/app/core/models/User';
 })
 export class RegisterComponent {
   constructor(private _auth: AuthService, private _router: Router) {}
-  
-  loading = false
-  message = ""
-  code = null
+
+  loading = false;
+  message = '';
+  code = null;
 
   registerForm = new FormGroup(
     {
@@ -40,16 +39,16 @@ export class RegisterComponent {
 
   async onSubmit() {
     try {
-      this.loading = true
-      await this._auth.createUser(this.registerForm.value as IUser)
-      this.loading = false
-      this._router.navigateByUrl("auth")
+      this.loading = true;
+      await this._auth.createUser(this.registerForm.value as IUser);
+      this.loading = false;
+      this._router.navigateByUrl('auth');
     } catch (e: any) {
-      this.loading = true
-      console.error(e)
-      this.code = e.code
-      this.message = e.message
-      this.loading = false
+      this.loading = true;
+      console.error(e);
+      this.code = e.code;
+      this.message = e.message;
+      this.loading = false;
     }
   }
 }

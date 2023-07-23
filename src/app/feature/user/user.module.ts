@@ -16,6 +16,6 @@ import { UserRoutingModule } from './user.routing.module';
     LoginModule,
     RegisterModule,
     ForgotPasswordModule,
-  ]
+  ],
 })
-export class UserModule { }
+export class UserModule {}

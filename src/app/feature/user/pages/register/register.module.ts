@@ -10,7 +10,12 @@ import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module'
 @NgModule({
   declarations: [RegisterComponent],
   imports: [
-    CommonModule, ReturnArrowModule, ReactiveFormsModule, FormsModule, AlertsModule, SpinnerModule
+    CommonModule,
+    ReturnArrowModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AlertsModule,
+    SpinnerModule,
   ],
 })
-export class RegisterModule { }
+export class RegisterModule {}
