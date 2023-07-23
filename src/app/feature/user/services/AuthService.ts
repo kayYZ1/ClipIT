@@ -4,7 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { IUser } from 'src/app/core/models/User';
+import { IUser, IUserLogin } from 'src/app/core/models/User';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -31,5 +31,18 @@ export class AuthService {
       avatar: '',
       about: 'Default',
     });
+  }
+
+  public async userLogin(user: IUserLogin) {
+    const credentials = await this._auth.signInWithEmailAndPassword(
+      user.email,
+      user.password
+    );
+
+    if (!credentials.user) {
+      throw new Error('User can not be found.');
+    }
+
+    return credentials;
   }
 }
