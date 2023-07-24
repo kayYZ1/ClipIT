@@ -42,7 +42,7 @@ export class AuthService {
     if (!credentials.user) {
       throw new Error('User can not be found.');
     }
-
+    console.log(credentials)
     return credentials;
   }
 }
