@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/AuthService';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUserLogin } from 'src/app/core/models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { IUserLogin } from 'src/app/core/models/User';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private _auth: AuthService) {}
+  constructor(private _auth: AuthService, private router: Router) {}
 
   loading = false;
   message = '';
@@ -26,6 +27,7 @@ export class LoginComponent {
     try {
       this.loading = true
       await this._auth.userLogin(this.loginForm.value as IUserLogin)
+      this.router.navigateByUrl("")
     }
     catch (e: any) {
       this.loading = true;
