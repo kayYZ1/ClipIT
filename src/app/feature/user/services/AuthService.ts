@@ -4,25 +4,29 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
+import { Observable, map } from 'rxjs';
 import { IUser, IUserLogin } from 'src/app/core/models/User';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private usersCollection: AngularFirestoreCollection<IUser>;
-  private userData: any
+  public isAuthenticated$: Observable<boolean>;
+  private userData: any;
 
   constructor(private _auth: AngularFireAuth, private _db: AngularFirestore) {
     this.usersCollection = _db.collection('user');
+    this.isAuthenticated$ = _auth.user.pipe(map((user) => !!user));
+
     this._auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
-        sessionStorage.setItem("user", JSON.stringify(this.userData))
-        JSON.parse(sessionStorage.getItem("user")!)
+        sessionStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(sessionStorage.getItem('user')!);
       } else {
-        sessionStorage.setItem("user", "null")
-        JSON.parse(localStorage.getItem("user")!)
+        sessionStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
       }
-    })
+    });
   }
 
   public async createUser(user: IUser) {
@@ -54,7 +58,7 @@ export class AuthService {
     if (!credentials.user) {
       throw new Error('User can not be found.');
     }
-    console.log(credentials)
+    console.log(credentials);
     return credentials;
   }
 }
