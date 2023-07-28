@@ -21,10 +21,8 @@ export class AuthService {
       if (user) {
         this.userData = user;
         sessionStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(sessionStorage.getItem('user')!);
       } else {
         sessionStorage.setItem('user', 'null');
-        JSON.parse(sessionStorage.getItem('user')!);
       }
     });
   }
@@ -60,5 +58,11 @@ export class AuthService {
     }
     console.log(credentials);
     return credentials;
+  }
+
+  public userLogout() {
+    sessionStorage.removeItem("user")
+
+    return this._auth.signOut()
   }
 }

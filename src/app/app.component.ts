@@ -5,11 +5,15 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'ClipIT';
   constructor(private _authService: AuthService) {}
 
-  isAuthenticated$: Observable<boolean> = this._authService.isAuthenticated$
+  isAuthenticated$: Observable<boolean> = this._authService.isAuthenticated$;
+
+  logout() {
+    this._authService.userLogout();
+  }
 }
