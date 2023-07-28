@@ -1,4 +1,4 @@
-<app-navbar *ngIf="!(isAuthenticated$ | async)"></app-navbar>
 <app-auth-navbar *ngIf="(isAuthenticated$ | async)"></app-auth-navbar>
+<app-navbar *ngIf="!(isAuthenticated$ | async)"></app-navbar>
   <router-outlet></router-outlet>
 <app-footer></app-footer>

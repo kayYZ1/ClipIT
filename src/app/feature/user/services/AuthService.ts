@@ -24,7 +24,7 @@ export class AuthService {
         JSON.parse(sessionStorage.getItem('user')!);
       } else {
         sessionStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        JSON.parse(sessionStorage.getItem('user')!);
       }
     });
   }
