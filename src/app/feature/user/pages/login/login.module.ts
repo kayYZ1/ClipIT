@@ -6,6 +6,7 @@ import { ReturnArrowModule } from 'src/app/shared/components/return-arrow/return
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertsModule } from 'src/app/shared/components/alerts/alerts.module';
 import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -14,6 +15,7 @@ import { SpinnerModule } from 'src/app/shared/components/spinner/spinner.module'
     ReturnArrowModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     AlertsModule,
     SpinnerModule
   ],
