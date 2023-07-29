@@ -42,7 +42,7 @@ export class RegisterComponent {
       this.loading = true;
       await this._auth.createUser(this.registerForm.value as IUser);
       this.loading = false;
-      this._router.navigateByUrl('auth');
+      this._router.navigateByUrl('/');
     } catch (e: any) {
       this.loading = true;
       console.error(e);
