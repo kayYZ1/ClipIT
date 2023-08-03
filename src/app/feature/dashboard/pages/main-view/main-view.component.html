@@ -1,0 +1,4 @@
+<app-auth-navbar *ngIf="(isAuthenticated$ | async)" (logout)="logout()"></app-auth-navbar>
+<app-navbar *ngIf="!(isAuthenticated$ | async)" (userInfo$)="userInfo$"></app-navbar>
+  <router-outlet></router-outlet>
+<app-footer></app-footer>
