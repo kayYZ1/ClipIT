@@ -10,10 +10,12 @@ import { UserService } from 'src/app/feature/user/services/UserService';
 export class AuthNavbarComponent {
   constructor(private _userService: UserService) {}
   @Output() logout: EventEmitter<void> = new EventEmitter<void>();
-  @Output() userInfo: EventEmitter<void> = new EventEmitter<void>();
+  @Output() userInfo$: EventEmitter<any> = new EventEmitter<any>();
 
-  
-  
+  ngOnInit() {
+    console.log(this.userInfo$)
+  }
+
   onLogout() {
     this.logout.emit();
   }

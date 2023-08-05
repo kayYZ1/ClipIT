@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IUser } from 'src/app/core/models/User';
 import { AuthService } from 'src/app/feature/user/services/AuthService';
 import { UserService } from 'src/app/feature/user/services/UserService';
 
@@ -13,8 +14,6 @@ export class MainViewComponent {
 
   isAuthenticated$: Observable<boolean> = this._authService.isAuthenticated$;
   token: string = this._authService.token
-
-  userInfo$: any = this._userService.getUserData(this.token)
 
   logout() {
     this._authService.userLogout();
