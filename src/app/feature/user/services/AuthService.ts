@@ -22,9 +22,11 @@ export class AuthService {
       if (user) {
         this.userData = user;
         this.token = this.userData.token;
-        sessionStorage.setItem('user', JSON.stringify(this.userData));
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem("user")!)
       } else {
-        sessionStorage.setItem('user', 'null');
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem("user")!)
       }
     });
   }
@@ -63,7 +65,7 @@ export class AuthService {
   }
 
   public userLogout() {
-    sessionStorage.removeItem("user")
+    localStorage.removeItem("user")
 
     return this._auth.signOut()
   }

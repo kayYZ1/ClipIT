@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class UserService {
   constructor(private _db: AngularFirestore) { }
 
-  async getUser(uid: string) {
+  async getUser(_uid: string) {
+    this._db.doc(`user/${_uid}`).get()
   }  
 }
