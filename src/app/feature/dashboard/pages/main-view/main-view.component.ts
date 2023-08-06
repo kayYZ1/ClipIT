@@ -13,7 +13,6 @@ export class MainViewComponent {
   constructor(private _authService: AuthService, private _userService: UserService) {}
 
   isAuthenticated$: Observable<boolean> = this._authService.isAuthenticated$;
-  token: string = this._authService.token
 
   logout() {
     this._authService.userLogout();
