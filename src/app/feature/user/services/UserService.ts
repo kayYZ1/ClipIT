@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
+import { IUser } from 'src/app/core/models/User';
 
-
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class UserService {
-  constructor(private _db: AngularFirestore) { }
+  private dbPath = '/user';
+  userRef: AngularFirestoreCollection<IUser>;
 
-  async getUser(_uid: string) {
-    this._db.doc(`user/${_uid}`).get()
-  }  
+  constructor(private _db: AngularFirestore) {
+    this.userRef = _db.collection(this.dbPath)
+  }
+
+  getSingleUser(uid: string): any {
+    try {
+      console.log(uid)
+      return this.userRef.doc(uid).get()
+    } catch (error) {
+      console.error("Error while fetching user: ", error)
+    }
+  }
 }

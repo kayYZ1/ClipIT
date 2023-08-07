@@ -11,7 +11,8 @@ import { IUser, IUserLogin } from 'src/app/core/models/User';
 export class AuthService {
   private usersCollection: AngularFirestoreCollection<IUser>;
   public isAuthenticated$: Observable<boolean>;
-  public userData: any;
+  public userData: IUser | any;
+  public userId: string | null = null;
 
   constructor(private _auth: AngularFireAuth, private _db: AngularFirestore) {
     this.usersCollection = _db.collection('user');
@@ -20,10 +21,9 @@ export class AuthService {
     this._auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
+        this.userId = this.userData.uid;
+        // /console.log(this.userId)
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
-      } else {
-        localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
       }
     });
@@ -47,11 +47,6 @@ export class AuthService {
       avatar:
         'https://cdn-icons-png.flaticon.com/512/44/44948.png?w=826&t=st=1691316060~exp=1691316660~hmac=64891e0789116bea12901234244768802b0207c6eb29bfe51c2aa16fe8786684',
       about: 'Default',
-    });
-
-    await credentials.user.updateProfile({
-      displayName: user.email,
-      photoURL: user.avatar,
     });
   }
 
