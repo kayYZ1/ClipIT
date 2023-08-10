@@ -63,6 +63,10 @@ export class AuthService {
     return credentials;
   }
 
+  public userForgotPassword(email: string) {
+    return this._auth.sendPasswordResetEmail(email).then(() => console.log('test'))
+  }
+
   public userLogout() {
     localStorage.removeItem('user');
 

@@ -20,6 +20,7 @@ export class AuthNavbarComponent {
 
   ngOnInit() {
     this.userId = this._authService.userId
+    console.log(this.userId)
     if (this.userId) {
       this.userInfo$ = this._userService.getSingleUser(this.userId as string)
     }
