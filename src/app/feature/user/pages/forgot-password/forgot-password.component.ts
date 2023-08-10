@@ -10,17 +10,29 @@ import { AuthService } from '../../services/AuthService';
 export class ForgotPasswordComponent {
   constructor(private _authService: AuthService) {}
 
-  resetPasswordForm = new FormGroup(
-    {
-      email: new FormControl("", [Validators.required, Validators.email])
-    }
-  )
+  loading = false;
+  success = false;
+  message = '';
+  code = null;
 
-  onSubmit() {
+  resetPasswordForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+  });
+
+  async onSubmit() {
     try {
-      this._authService.userForgotPassword(this.resetPasswordForm.value.email as string)
-    } catch (error) {
-      console.log(error)
+      this.loading = true;
+      await this._authService.userForgotPassword(
+        this.resetPasswordForm.value.email as string
+      );
+      this.loading = false;
+      this.success = true;
+    } catch (e: any) {
+      this.loading = true;
+      console.log(e);
+      this.code = e.code;
+      this.message = e.message;
+      this.loading = false;
     }
   }
 }
