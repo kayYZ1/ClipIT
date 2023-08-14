@@ -12,7 +12,6 @@ export class AuthService {
   private usersCollection: AngularFirestoreCollection<IUser>;
   public isAuthenticated$: Observable<boolean>;
   public userData: IUser | any;
-  public userId: string | null = null;
 
   constructor(private _auth: AngularFireAuth, private _db: AngularFirestore) {
     this.usersCollection = _db.collection('user');
@@ -21,12 +20,14 @@ export class AuthService {
     this._auth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
-        this.userId = this.userData.uid;
-        // /console.log(this.userId)
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       }
     });
+  }
+
+  public getUser(): any {
+    return this._auth.currentUser
   }
 
   public async createUser(user: IUser) {

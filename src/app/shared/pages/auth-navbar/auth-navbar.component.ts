@@ -10,21 +10,10 @@ import { Observable } from 'rxjs';
   providers: [UserService, AuthService],
 })
 export class AuthNavbarComponent {
-  constructor(
-    private _authService: AuthService,
-    private _userService: UserService
-  ) {}
+  constructor() {}
   @Output() logout: EventEmitter<void> = new EventEmitter<void>();
   userId: string | null = null;
   userInfo$: Observable<any> | null = null;
-
-  ngOnInit() {
-    this.userId = this._authService.userId
-    console.log(this.userId)
-    if (this.userId) {
-      this.userInfo$ = this._userService.getSingleUser(this.userId as string)
-    }
-  }
 
   onLogout() {
     this.logout.emit();
